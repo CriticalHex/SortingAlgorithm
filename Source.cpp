@@ -48,7 +48,28 @@ int main() {
 		}
 	}
 	else if (input == 3) {
-		std::cout << "Well don't you think you're clever.";
+		std::cout << "Well don't you think you're clever.\n\n";
+		bool incorrect = true;
+		int attempts = 0;
+		int arr2[100];
+		for (int i = 0; i < 100; i++) { // Reassign array slots with a random integer 1-100
+			arr2[i] = toSort[i];
+		}
+		std::sort(arr2, arr2 + 100);
+		do {
+			//cout << "Attempting bogo sort...\n";
+			std::random_shuffle(toSort, toSort + 10);
+			attempts += 1;
+			int correct = 0;
+			for (int i = 0; i < 100; i++) { // Reassign array slots with a random integer 1-100
+				if (toSort[i] == arr2[i]) {
+					correct += 1;
+				}
+			}
+			if (correct == 100) {
+				incorrect = false;
+			}
+		} while (incorrect == true);
 	}
 	else {
 		std::cout << "Try again...";
